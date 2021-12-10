@@ -1,0 +1,179 @@
+/* eslint-disable max-lines-per-function */
+/* eslint-disable max-statements */
+import React from "react";
+
+export interface ILazyImgOptions {
+    src: string;
+    alt: string;
+    offset?: number;
+    className?: string;
+    setRef?: (elem: HTMLImageElement | null) => void;
+}
+
+export class LazyImg<P extends ILazyImgOptions> extends React.Component<P> {
+
+    public static isWebP: boolean | null = null;
+
+    public resultUrl: string = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+
+    public resizeCheckTimeout: number = 0;
+
+    public thisComponent!: HTMLImageElement | null;
+
+    private sourceUrl: string = "";
+
+    private readonly extensionsRegexp: RegExp = /\.\w+$/u;
+
+    private readonly controlPoints: number[] = [160, 320, 640, 1280, 1920];
+
+    private readonly windowResizeHandler: EventListenerOrEventListenerObject;
+
+    private lastOptimalSize: number = -1;
+
+    private checks: number = 0;
+
+    public constructor (props: P) {
+        super(props);
+
+        this.windowResizeHandler = (): void => this.onWindowResize();
+    }
+
+    public componentDidMount (): void {
+        this.shouldComponentUpdate(this.props);
+        window.addEventListener("resize", this.windowResizeHandler);
+    }
+
+    public shouldComponentUpdate (props: Readonly<P>): boolean {
+        if (this.sourceUrl !== props.src) {
+            this.sourceUrl = props.src;
+            this.checks = 0;
+            requestAnimationFrame(() => this.checkImage());
+            return true;
+        }
+        return false;
+    }
+
+    public componentWillUnmount (): void {
+        window.removeEventListener("resize", this.windowResizeHandler);
+    }
+
+    public checkImage (isResize: boolean = false): void {
+        if (!this.thisComponent) {
+            return;
+        }
+
+        if (this.checks > 1) {
+            return;
+        }
+
+        if (LazyImg.isWebP === null) {
+            this.checkWebpFeature().then((result: boolean) => {
+                LazyImg.isWebP = result;
+                this.checkImage();
+            });
+            return;
+        }
+
+        // Checks +1 after check webp support
+        this.checks += 1;
+
+        let containerSize: number = 0;
+        let element: HTMLElement | null = this.thisComponent;
+        while (containerSize < 2 && Boolean(element)) {
+            containerSize = element.getBoundingClientRect().width ||
+                Number.parseFloat(getComputedStyle(element).width) || 0;
+            // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+            element = element.parentElement as HTMLElement;
+        }
+
+        containerSize *= window.devicePixelRatio;
+        let indexOptimalSize: number = this.controlPoints
+            .findIndex((width: number) => containerSize <= width) || this.controlPoints[this.controlPoints.length - 1];
+
+        if (indexOptimalSize < 0) { // If bigger then maximum size or NaN
+            indexOptimalSize = this.controlPoints.length - 1;
+        }
+
+        indexOptimalSize += this.props.offset ?? 0;
+        if (indexOptimalSize < 0) {
+            indexOptimalSize = 0;
+        } else if (indexOptimalSize >= this.controlPoints.length) {
+            indexOptimalSize = this.controlPoints.length - 1;
+        }
+
+        if (!isResize && this.lastOptimalSize >= 0 && this.lastOptimalSize !== indexOptimalSize) {
+            // eslint-disable-next-line no-console
+            console.warn("New image size", this.controlPoints[this.lastOptimalSize], this.controlPoints[indexOptimalSize], this.sourceUrl);
+        }
+        this.lastOptimalSize = indexOptimalSize;
+
+        const source = String(this.sourceUrl);
+        const match: RegExpExecArray | null = this.extensionsRegexp.exec(source);
+
+        const sourceUrl = new URL(source, location.origin);
+
+        const url = new URL("/optimizer/optimize", location.origin);
+        url.searchParams.set("src", sourceUrl.toString());
+        url.searchParams.set("size", String(this.controlPoints[indexOptimalSize]));
+        url.searchParams.set("format", LazyImg.isWebP ? "webp" : String(match?.[0]));
+        const resultUrl = url.toString();
+
+        if (this.resultUrl !== resultUrl) {
+            this.resultUrl = resultUrl;
+            this.thisComponent.src = this.resultUrl;
+            if (process.env.NODE_ENV !== "production") {
+                // eslint-disable-next-line no-console
+                console.log([
+                    "🏄 Image optimization:",
+                    `Container size ${containerSize}px,`,
+                    `optimal size ${this.controlPoints[indexOptimalSize]},`,
+                    `image ${this.sourceUrl}`
+                ].join(" "));
+            }
+        }
+    }
+
+    public render (): JSX.Element {
+        return (
+            <img
+                alt={this.props.alt}
+                onLoad={(): unknown => requestAnimationFrame(() => this.checkImage())}
+                ref={(elem: HTMLImageElement | null): unknown => this.thisComponent = elem}
+                src={this.resultUrl}
+                style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%"
+                }}
+            />
+        );
+    }
+
+    private onWindowResize (): void {
+        if (this.resizeCheckTimeout) {
+            clearTimeout(this.resizeCheckTimeout);
+        }
+
+        this.resizeCheckTimeout = window.setTimeout(() => {
+            this.checks = 0;
+            this.checkImage(true);
+        }, 500);
+    }
+
+    private checkWebpFeature (): Promise<boolean> {
+        return new Promise<boolean>((resolve: (result: boolean) => void) => {
+            const kTestImages = {
+                lossless: "UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=="
+            };
+            const img = new Image();
+            img.onload = (): void => {
+                const result = (img.width > 0) && (img.height > 0);
+                resolve(result);
+            };
+            img.onerror = (): void => {
+                resolve(false);
+            };
+            img.src = `data:image/webp;base64,${kTestImages.lossless}`;
+        });
+    }
+
+}
