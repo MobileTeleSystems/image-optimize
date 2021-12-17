@@ -15,7 +15,7 @@ Features:
 ### Try
 To try the microservice features, run the container with the command:
 ```sh
-docker run -it --rm -p 3000:3000 mts-optimize
+docker run -it --rm -p 3000:3000 mtsrus/image-optimize
 ```
 
 Now you can open the browser and check the work with the command:
@@ -28,7 +28,7 @@ By changing the src, size, format parameters, you can choose the path to the ima
 ### Use
 To start the microservice in production, use the command:
 ```sh
-docker run -d --restart always -p 3000:3000 mts-optimize
+docker run -d --restart always -p 3000:3000 mtsrus/image-optimize
 ```
 
 ### Container parameters
@@ -38,12 +38,4 @@ docker run -d --restart always -p 3000:3000 mts-optimize
 - `-e BASIC_AUTHS="https%3A%2F%2Ftb.mts.ru%2F"` - an array of endpoints with basic authorization parameters, default empty. Has format encodeURIComponent("url"):login:password. Use comma as separator.
 
 ### Components for web
-Right now you can use sample from the ./components-samples/ReactLazyImg.ts(add link after publishing) file. Just copy the file to your project and use it. The component inherits interface of the html img element. The component automatically check the most suitable picture in size and formats supported by the browser and selects the most optimal picture for display.
-
-Sample for use in React:
-```typescript
-<LazyImg
-    alt="Sample of work mts-optimize"
-    src="/static/landing/images-getmeback/phone-fon.png"
-/>
-```
+To optimize images in the browser, there is a component for React. You can find it [by following the link](https://github.com/MobileTeleSystems/image-optimize-react). The component itself determines the most suitable image parameters and requests it from this microservice.
