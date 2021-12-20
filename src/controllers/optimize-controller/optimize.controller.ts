@@ -48,13 +48,6 @@ export class OptimizeController {
             throw new BadRequestException("Parameter 'format' is required.");
         }
 
-        const formats = ["jpeg", "png", "webp", "avif"];
-        if (!formats.includes(format)) {
-            throw new BadRequestException(
-                "Parameter 'format' is not supported.",
-            );
-        }
-
         const nQuality = quality ? Number.parseInt(quality) : void 0;
         if (nQuality !== void 0) {
             if (isNaN(nQuality)) {

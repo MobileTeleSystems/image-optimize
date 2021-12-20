@@ -1,6 +1,8 @@
-import { Injectable } from "@nestjs/common";
+import {BadRequestException, Injectable} from '@nestjs/common';
 import * as sharp from "sharp"; // http://sharp.pixelplumbing.com/en/stable/api-constructor/ , https://developers.google.com/speed/webp/docs/cwebp
 import fetch, { Headers } from "node-fetch";
+
+const FORMATS: ReadonlyArray<string> = ["jpeg", "png", "webp", "avif"];
 
 @Injectable()
 export class OptimizeService {
@@ -10,6 +12,12 @@ export class OptimizeService {
         format: string,
         quality?: number,
     ): Promise<Buffer> {
+        if (!FORMATS.includes(format.toLowerCase())) {
+            throw new BadRequestException(
+                "Parameter 'format' is not supported.",
+            );
+        }
+
         const data = await this.getImage(src);
 
         let img = sharp(data).resize({ width: intSize });
