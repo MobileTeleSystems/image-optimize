@@ -1,3 +1,5 @@
+import { AllowService } from "./../../services/allow.service";
+import { OptimizeService } from "./../../services/optimize.service";
 import { Test, TestingModule } from "@nestjs/testing";
 import { OptimizeController } from "./optimize.controller";
 
@@ -7,7 +9,7 @@ describe("OptimizeController", () => {
     beforeEach(async () => {
         const app: TestingModule = await Test.createTestingModule({
             controllers: [OptimizeController],
-            providers: [],
+            providers: [OptimizeService, AllowService],
         }).compile();
 
         optimizeController = app.get<OptimizeController>(OptimizeController);

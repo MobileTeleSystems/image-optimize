@@ -6,6 +6,10 @@ WORKDIR /app
 COPY package*.json tsconfig*.json nest-cli.json ./
 RUN npm install --only=development
 COPY ./src ./src
+COPY ./test ./test
+
+RUN npm run test
+RUN npm run test:e2e
 RUN npm run build
 
 

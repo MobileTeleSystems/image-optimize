@@ -6,13 +6,17 @@ import fetch, { Headers } from "node-fetch";
 export class OptimizeService {
     public async getOptimizedImage(
         src: string,
-        intSize: number,
+        width: number,
         format: string,
         quality?: number,
     ): Promise<Buffer> {
-        const data = await this.getImage(src);
+        const imgBuffer = await this.getImage(src);
 
-        let img = sharp(data).resize({ width: intSize });
+        let img = sharp(imgBuffer);
+        const { width: sourceWidth } = await img.metadata();
+
+        img.resize({ width: Math.min(sourceWidth, width) });
+
         if (format === "webp") {
             img = img.webp({ quality });
         } else if (format === "avif") {

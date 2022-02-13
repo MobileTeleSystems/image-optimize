@@ -1,10 +1,16 @@
 {
   "name": "image-optimize",
-  "version": "0.1.8",
+  "version": "1.0.1",
   "description": "",
-  "author": "",
+  "author": "MobileTeleSystems",
+  "homepage": "https://github.com/MobileTeleSystems/image-optimize",
+  "bugs": "https://github.com/MobileTeleSystems/image-optimize/issues",
   "private": true,
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MobileTeleSystems/image-optimize.git"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -21,39 +27,39 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@digikare/nestjs-prom": "=1.0.0",
-    "@nestjs/common": "=7.6.18",
-    "@nestjs/core": "=7.6.18",
-    "@nestjs/platform-express": "=7.6.18",
-    "node-fetch": "=2.6.1",
-    "reflect-metadata": "=0.1.13",
-    "rimraf": "=3.0.2",
-    "rxjs": "=7.1.0",
-    "sharp": "=0.28.3"
+    "@digikare/nestjs-prom": "^1.0.0",
+    "@nestjs/common": "^7.6.18",
+    "@nestjs/core": "^7.6.18",
+    "@nestjs/platform-express": "^7.6.18",
+    "node-fetch": "^2.6.1",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.1.0",
+    "sharp": "^0.28.3"
   },
   "devDependencies": {
-    "@nestjs/cli": "=7.6.0",
-    "@nestjs/schematics": "=7.3.1",
-    "@nestjs/testing": "=7.6.18",
-    "@types/express": "=4.17.12",
-    "@types/jest": "=26.0.23",
-    "@types/node": "=16.0.0",
-    "@types/node-fetch": "=2.5.10",
-    "@types/sharp": "=0.28.3",
-    "@types/supertest": "=2.0.11",
-    "@typescript-eslint/eslint-plugin": "=4.28.1",
-    "@typescript-eslint/parser": "=4.28.1",
-    "eslint": "=7.30.0",
-    "eslint-config-prettier": "=8.3.0",
-    "eslint-plugin-prettier": "=3.4.0",
-    "jest": "=27.0.6",
-    "prettier": "=2.3.2",
-    "supertest": "=6.1.3",
-    "ts-jest": "=27.0.3",
-    "ts-loader": "=9.2.3",
-    "ts-node": "=10.0.0",
-    "tsconfig-paths": "=3.9.0",
-    "typescript": "=4.3.5"
+    "@nestjs/cli": "^7.6.0",
+    "@nestjs/schematics": "^7.3.1",
+    "@nestjs/testing": "^7.6.18",
+    "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
+    "@types/node": "^16.0.0",
+    "@types/node-fetch": "^2.5.10",
+    "@types/sharp": "^0.28.3",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.28.1",
+    "@typescript-eslint/parser": "^4.28.1",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^4.3.5"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -64,7 +70,7 @@
     "rootDir": "src",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
-      "=.+\\.(t|j)s$": "ts-jest"
+      "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
       "**/*.(t|j)s"
