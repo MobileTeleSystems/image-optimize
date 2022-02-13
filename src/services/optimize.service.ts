@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import * as sharp from "sharp"; // http://sharp.pixelplumbing.com/en/stable/api-constructor/ , https://developers.google.com/speed/webp/docs/cwebp
 import fetch, { Headers } from "node-fetch";
+import { Formats } from "../enums/formats";
 
 sharp.concurrency(0);
 
@@ -9,7 +10,7 @@ export class OptimizeService {
     public async getOptimizedImage(
         src: string,
         width: number,
-        format: string,
+        format: Formats,
         quality?: number,
     ): Promise<Buffer> {
         const imgBuffer = await this.getImage(src);
@@ -19,13 +20,13 @@ export class OptimizeService {
 
         img.resize({ width: Math.min(sourceWidth, width) });
 
-        if (format === "webp") {
+        if (format === Formats.Webp) {
             img = img.webp({ quality });
-        } else if (format === "avif") {
+        } else if (format === Formats.Avif) {
             img = img.avif({ quality });
-        } else if (format === "png") {
+        } else if (format === Formats.Png) {
             img = img.png({ quality });
-        } else if (format === "jpeg") {
+        } else if (format === Formats.Jpeg) {
             img = img.jpeg({ quality });
         }
 

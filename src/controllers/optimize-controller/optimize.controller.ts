@@ -3,6 +3,8 @@ import { Response } from "express";
 import { BadRequestException } from "@nestjs/common";
 import { OptimizeService } from "../../services/optimize.service";
 import { AllowService } from "../../services/allow.service";
+import { Formats } from "../../enums/formats";
+import { enumFromStringValue } from "../../utils/enumFromStringValue";
 
 @Controller("optimize")
 export class OptimizeController {
@@ -48,22 +50,22 @@ export class OptimizeController {
             throw new BadRequestException("Parameter 'format' is required.");
         }
 
-        const formats = ["jpeg", "png", "webp", "avif"];
-        if (!formats.includes(format)) {
+        const enumFormat = enumFromStringValue(Formats, format);
+        if (enumFormat === void 0) {
             throw new BadRequestException(
                 "Parameter 'format' is not supported.",
             );
         }
 
-        const nQuality = quality ? Number.parseInt(quality) : void 0;
-        if (nQuality !== void 0) {
-            if (isNaN(nQuality)) {
+        const intQuality = quality ? Number.parseInt(quality) : void 0;
+        if (intQuality !== void 0) {
+            if (isNaN(intQuality)) {
                 throw new BadRequestException(
                     "Parameter 'quality' is not a number.",
                 );
             }
 
-            if (!(1 <= nQuality && nQuality <= 100)) {
+            if (!(1 <= intQuality && intQuality <= 100)) {
                 throw new BadRequestException(
                     "Parameter 'quality' must be in range 1-100.",
                 );
@@ -86,8 +88,8 @@ export class OptimizeController {
         const result = await this.optimizeService.getOptimizedImage(
             decodedSrc,
             intSize,
-            format,
-            nQuality,
+            enumFormat,
+            intQuality,
         );
 
         response
