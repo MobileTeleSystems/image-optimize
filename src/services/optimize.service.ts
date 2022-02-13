@@ -2,6 +2,8 @@ import { Injectable } from "@nestjs/common";
 import * as sharp from "sharp"; // http://sharp.pixelplumbing.com/en/stable/api-constructor/ , https://developers.google.com/speed/webp/docs/cwebp
 import fetch, { Headers } from "node-fetch";
 
+sharp.concurrency(0);
+
 @Injectable()
 export class OptimizeService {
     public async getOptimizedImage(
