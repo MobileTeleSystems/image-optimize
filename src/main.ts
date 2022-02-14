@@ -7,13 +7,18 @@ process.env.SHARP_CONCURRENCY ||= "0"; // https://sharp.pixelplumbing.com/api-ut
 
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import * as morgan from "morgan";
+import {
+    FastifyAdapter,
+    NestFastifyApplication,
+} from "@nestjs/platform-fastify";
 
 // init app
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
-    app.use(morgan("tiny"));
+    const app = await NestFactory.create<NestFastifyApplication>(
+        AppModule,
+        new FastifyAdapter({ logger: true }),
+    );
 
-    await app.listen(process.env.PORT);
+    await app.listen(process.env.PORT, "0.0.0.0");
 }
 bootstrap();

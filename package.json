@@ -1,6 +1,6 @@
 {
   "name": "image-optimize",
-  "version": "1.1.2",
+  "version": "1.2.1",
   "description": "",
   "author": "MobileTeleSystems",
   "homepage": "https://github.com/MobileTeleSystems/image-optimize",
@@ -30,8 +30,9 @@
     "@nestjs/common": "^8.2.6",
     "@nestjs/core": "^8.2.6",
     "@nestjs/platform-express": "^8.2.6",
+    "@nestjs/platform-fastify": "^8.2.6",
     "@willsoto/nestjs-prometheus": "^4.4.0",
-    "morgan": "^1.10.0",
+    "fastify": "^3.27.1",
     "node-fetch": "^2.6.1",
     "prom-client": "^14.0.1",
     "reflect-metadata": "^0.1.13",

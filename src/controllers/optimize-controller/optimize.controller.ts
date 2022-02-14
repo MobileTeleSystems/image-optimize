@@ -1,10 +1,10 @@
 import { Controller, Get, HttpStatus, Query, Res } from "@nestjs/common";
-import { Response } from "express";
 import { BadRequestException } from "@nestjs/common";
 import { OptimizeService } from "../../services/optimize.service";
 import { AllowService } from "../../services/allow.service";
 import { Formats } from "../../enums/formats";
 import { enumFromStringValue } from "../../utils/enumFromStringValue";
+import { FastifyReply } from "fastify";
 
 @Controller("optimize")
 export class OptimizeController {
@@ -29,7 +29,7 @@ export class OptimizeController {
         @Query("size") size: string,
         @Query("format") format: string,
         @Query("quality") quality: string | void,
-        @Res() response: Response,
+        @Res() response: FastifyReply,
     ): Promise<void> {
         if (!src) {
             throw new BadRequestException("Parameter 'src' is required.");
@@ -93,7 +93,7 @@ export class OptimizeController {
         );
 
         response
-            .setHeader("Content-Type", `image/${format}`)
+            .header("Content-Type", `image/${format}`)
             .status(HttpStatus.OK)
             .send(result);
     }
