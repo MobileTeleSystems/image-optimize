@@ -3,7 +3,7 @@ import * as sharp from "sharp"; // http://sharp.pixelplumbing.com/en/stable/api-
 import fetch, { Headers } from "node-fetch";
 import { Formats } from "../enums/formats";
 
-sharp.concurrency(0);
+sharp.concurrency(Number.parseInt(process.env.SHARP_CONCURRENCY, 10));
 
 @Injectable()
 export class OptimizeService {
