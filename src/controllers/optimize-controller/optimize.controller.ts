@@ -15,8 +15,8 @@ export class OptimizeController {
 
     /**
      * Sample:
-     * http://localhost:3002/optimize?src=https%3A%2F%2Ftb.mts.ru%2Fstatic%2Flanding%2Fimages-index2%2Fbanner%2Fslider%2Ftv-banner-1.png&size=1920&format=avif
-     * https://tb.mts.ru/optimizer/optimize?src=https%3A%2F%2Ftb.mts.ru%2Fstatic%2Flanding%2Fimages-index2%2Fslider-workzen%2Fworkzen-dark.png&size=1280&format=webp
+     * http://localhost:3000/optimize?src=https%3A%2F%2Ftb.mts.ru%2Fstatic%2Flanding%2Fimages-index2%2Fbanner%2Fslider%2Fznaem2.png&size=1920&quality=80&format=avif
+     * https://tb.mts.ru/optimizer/optimize?src=https%3A%2F%2Ftb.mts.ru%2Fstatic%2Flanding%2Fimages-index2%2Fbanner%2Fslider%2Fznaem2.png&size=1920&quality=80&format=avif
      *
      * @param {string} src - Url to image for optimization;
      * @param {string} size - Size of result image;
