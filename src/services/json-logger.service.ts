@@ -11,7 +11,6 @@ export enum LogLevels {
 }
 
 export class JsonLogger implements LoggerService {
-
     protected hostname: string = hostname();
 
     /**
@@ -72,23 +71,5 @@ export class JsonLogger implements LoggerService {
                 service: "image-optimize",
             }),
         );
-    }
-}
-
-export class FastifyJsonLogger extends JsonLogger {
-    public info(message: string, ...args: unknown[]): void {
-        this.writeJson(message, LogLevels.INFO);
-    }
-
-    public fatal(msg: string, ...args: unknown[]): void {
-        this.writeJson(msg, LogLevels.FATAL);
-    }
-
-    public trace(message: string, ...args: unknown[]): void {
-        this.writeJson(message, LogLevels.TRACE);
-    }
-
-    public child(): FastifyJsonLogger {
-        return new FastifyJsonLogger();
     }
 }

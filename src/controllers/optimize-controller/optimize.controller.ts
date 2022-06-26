@@ -4,7 +4,7 @@ import { OptimizeService } from "../../services/optimize.service";
 import { AllowService } from "../../services/allow.service";
 import { Formats } from "../../enums/formats";
 import { enumFromStringValue } from "../../utils/enumFromStringValue";
-import { FastifyReply } from "fastify";
+import { Response } from "express";
 
 @Controller("optimize")
 export class OptimizeController {
@@ -29,7 +29,7 @@ export class OptimizeController {
         @Query("size") size: string,
         @Query("format") format: string,
         @Query("quality") quality: string | void,
-        @Res() response: FastifyReply,
+        @Res() response: Response,
     ): Promise<void> {
         if (!src) {
             throw new BadRequestException("Parameter 'src' is required.");
@@ -93,7 +93,7 @@ export class OptimizeController {
         );
 
         response
-            .header("Content-Type", `image/${format}`)
+            .setHeader("Content-Type", `image/${format}`)
             .status(HttpStatus.OK)
             .send(result);
     }
