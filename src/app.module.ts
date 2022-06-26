@@ -5,11 +5,12 @@ import { AllowService } from "./services/allow.service";
 import { PrometheusModule } from "@willsoto/nestjs-prometheus";
 import { NestModule, MiddlewareConsumer } from "@nestjs/common";
 import { RequestLoggerMiddleware } from "./middleware/RequestLoggerMiddleware";
+import { ImgLoaderService } from "./services/img-loader.service";
 
 @Module({
     imports: [PrometheusModule.register()],
     controllers: [OptimizeController],
-    providers: [OptimizeService, AllowService],
+    providers: [OptimizeService, AllowService, ImgLoaderService],
 })
 export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer): void {

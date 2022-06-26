@@ -5,11 +5,13 @@ import { AllowService } from "../../services/allow.service";
 import { Formats } from "../../enums/formats";
 import { enumFromStringValue } from "../../utils/enumFromStringValue";
 import { Response } from "express";
+import { ImgLoaderService } from "../../services/img-loader.service";
 
 @Controller("optimize")
 export class OptimizeController {
     constructor(
         private readonly optimizeService: OptimizeService,
+        private readonly imgLoaderService: ImgLoaderService,
         private readonly allowService: AllowService,
     ) {}
 
@@ -85,15 +87,17 @@ export class OptimizeController {
             );
         }
 
+        const imgBuffer = await this.imgLoaderService.getImage(decodedSrc);
+
         const result = await this.optimizeService.getOptimizedImage(
-            decodedSrc,
+            imgBuffer,
             intSize,
             enumFormat,
             intQuality,
         );
 
         response
-            .setHeader("Content-Type", `image/${format}`)
+            .setHeader("Content-Type", `image/${enumFormat}`)
             .status(HttpStatus.OK)
             .send(result);
     }

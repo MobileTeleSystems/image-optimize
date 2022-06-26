@@ -35,7 +35,7 @@ docker run -d --restart always -p 3000:3000 mtsrus/image-optimize
 - `-e PORT=3000` - the port on which the microservice will be launched, default 3000.
 - `-e ALLOW_SIZES="100,200,1024-1920"` - an array of allowed sizes for the resulting images, default 100-1920. Use specific values to prevent heavy loads on the server.
 - `-e ALLOW_SOURCES="https%3A%2F%2Ftb.mts.ru%2F"` - url array of allowed addresses for image sources, default * (any). Use comma as separator. It is recommended to apply encodeURIComponent to url.
-- `-e BASIC_AUTHS="https%3A%2F%2Ftb.mts.ru%2F"` - an array of endpoints with basic authorization parameters, default empty. Has format encodeURIComponent("url"):login:password. Use comma as separator.
+- `-e BASIC_AUTHS="https%3A%2F%2Ftb.mts.ru%2F"` - an array of endpoints with basic authorization parameters, default empty. Has format encodeURIComponent("url"):encodeURIComponent("login"):encodeURIComponent("password"). Use comma as separator.
 - `-e SHARP_CONCURRENCY=0` - number of threads libvips' should create to process each image, default 0 (will reset to the number of CPU cores).
 
 ### Components for web
