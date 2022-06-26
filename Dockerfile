@@ -1,7 +1,5 @@
 FROM node:18-alpine AS development
 
-RUN env
-
 WORKDIR /app
 COPY package*.json tsconfig*.json nest-cli.json ./
 RUN npm ci --only=development
