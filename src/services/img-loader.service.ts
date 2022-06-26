@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import fetch, { Headers } from "node-fetch";
 
 @Injectable()
 export class ImgLoaderService {
@@ -14,7 +13,8 @@ export class ImgLoaderService {
             headers: this.prepareHeaders(src),
         });
 
-        return await fetchResponse.buffer();
+        const arrayBuffer = await fetchResponse.arrayBuffer();
+        return Buffer.from(arrayBuffer);
     }
 
     protected prepareHeaders(src: string): Headers {
