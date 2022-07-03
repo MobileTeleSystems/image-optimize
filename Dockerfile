@@ -2,7 +2,7 @@ FROM node:18-alpine AS development
 
 WORKDIR /app
 COPY package*.json tsconfig*.json nest-cli.json ./
-RUN npm ci --only=development
+RUN npm ci
 COPY ./src ./src
 COPY ./test ./test
 
@@ -17,8 +17,14 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /app
+
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nestjs -u 1001
+
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 COPY --from=development /app/dist ./dist
+
+USER nestjs
 
 CMD ["node", "dist/main"]
