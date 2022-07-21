@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable } from "@nestjs/common";
 
 @Injectable()
 export class ImgLoaderService {
@@ -13,8 +13,15 @@ export class ImgLoaderService {
             headers: this.prepareHeaders(src),
         });
 
-        const arrayBuffer = await fetchResponse.arrayBuffer();
-        return Buffer.from(arrayBuffer);
+        if (fetchResponse.ok) {
+            const arrayBuffer = await fetchResponse.arrayBuffer();
+            return Buffer.from(arrayBuffer);
+        }
+
+        throw new BadRequestException(
+            `Error on fetch image by src: ${src}`,
+            `${fetchResponse.status} - ${fetchResponse.statusText}`,
+        );
     }
 
     protected prepareHeaders(src: string): Headers {

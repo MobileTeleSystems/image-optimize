@@ -35,4 +35,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: mtsrus/image-optimize:latest, mtsrus/image-optimize:1.3, mtsrus/image-optimize:1.3.3
+          tags: mtsrus/image-optimize:latest, mtsrus/image-optimize:1.3, mtsrus/image-optimize:1.3.4
