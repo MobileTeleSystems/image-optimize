@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, NotFoundException } from "@nestjs/common";
 
 @Injectable()
 export class ImgLoaderService {
@@ -16,6 +16,13 @@ export class ImgLoaderService {
         if (fetchResponse.ok) {
             const arrayBuffer = await fetchResponse.arrayBuffer();
             return Buffer.from(arrayBuffer);
+        }
+
+        if (fetchResponse.status === 404) {
+            throw new NotFoundException(
+                `Error on fetch image by src: ${src}`,
+                `${fetchResponse.status} - ${fetchResponse.statusText}`,
+            );
         }
 
         throw new BadRequestException(
