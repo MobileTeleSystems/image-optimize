@@ -63,7 +63,7 @@ describe("OptimizeController (e2e)", () => {
         return request(app.getHttpServer())
             .get(`/optimize?${search.toString()}`)
             .expect("Content-Type", "image/avif")
-            .expect("Content-Length", "619")
+            .expect("Content-Length", "665")
             .expect(200);
     });
 });
