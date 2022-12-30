@@ -1,3 +1,8 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/042786e7f0304d1ea29d83f8c1522a55)](https://www.codacy.com/gh/MobileTeleSystems/image-optimize/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=MobileTeleSystems/image-optimize&amp;utm_campaign=Badge_Grade)
+[![npm version](https://img.shields.io/npm/v/react.svg?style=flat)](https://www.npmjs.com/package/reca)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/LabEG/reca/blob/main/LICENSE)
+
 # Microservice for responsive resize, compression and optimization of images on the fly for web pages.
 
 Optimizing images helps reduce image weight and increases website loading speed, which is very important for both users and search engines. For these purposes, we have created a microservice that perfectly copes with this task.
