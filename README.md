@@ -37,7 +37,7 @@ By changing the src, size, format parameters,
 you can choose the path to the image,
 the final size and the image format.
 
-### Use
+## Use
 
 To start the microservice in production, use the command:
 
@@ -45,7 +45,7 @@ To start the microservice in production, use the command:
 docker run -d --restart always -p 3000:3000 mtsrus/image-optimize
 ```
 
-### Container parameters
+## Container parameters
 
 - `-e PORT=3000` - the port on which the microservice will be launched, default 3000.
 - `-e ALLOW_SIZES="100,200,1024-1920"` - an array of allowed sizes for the resulting images,
@@ -60,7 +60,7 @@ docker run -d --restart always -p 3000:3000 mtsrus/image-optimize
 - `-e SHARP_CONCURRENCY=0` - number of threads libvips' should create to process each image,
     default 0 (will reset to the number of CPU cores).
 
-### Components for web
+## Components for web
 
 To optimize images in the browser, there is a component for React. You can find it
 [by following the link](https://github.com/MobileTeleSystems/image-optimize-react).
