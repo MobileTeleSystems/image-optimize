@@ -22,6 +22,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nestjs -u 1001
 
 COPY package*.json ./
+RUN sed -i 's/husky install//g' ./package.json
 RUN npm ci --omit=dev
 COPY --from=development /app/dist ./dist
 
