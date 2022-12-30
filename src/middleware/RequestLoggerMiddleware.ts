@@ -1,4 +1,4 @@
-import { Injectable, NestMiddleware, Logger } from "@nestjs/common";
+import { Injectable, NestMiddleware } from "@nestjs/common";
 
 import { Request, Response, NextFunction } from "express";
 import { JsonLogger, LogLevels } from "../services/json-logger.service";

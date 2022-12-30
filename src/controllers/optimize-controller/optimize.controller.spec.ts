@@ -18,6 +18,8 @@ describe("OptimizeController", () => {
 
     describe("root", () => {
         it('should return "Hello World!"', () => {
+            // write tests later
+            expect(optimizeController).toBeInstanceOf(OptimizeController);
             expect("Hello World!").toBe("Hello World!");
         });
     });

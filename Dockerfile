@@ -1,7 +1,7 @@
 FROM node:18-alpine AS development
 
 WORKDIR /app
-COPY package*.json tsconfig*.json nest-cli.json ./
+COPY package*.json tsconfig*.json nest-cli.json .eslintrc.js ./
 RUN npm ci
 COPY ./src ./src
 COPY ./test ./test
