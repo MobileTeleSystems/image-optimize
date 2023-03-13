@@ -8,7 +8,7 @@ export class RequestLoggerMiddleware implements NestMiddleware {
     private logger = new JsonLogger();
 
     use(request: Request, response: Response, next: NextFunction): void {
-        const { ip, method, url, query } = request;
+        const { ip, method, originalUrl, query } = request;
         const userAgent = request.get("user-agent") || "not set";
         const startTime = performance.now();
         const traceId = request.get("x-trace-id") || void 0;
@@ -27,7 +27,7 @@ export class RequestLoggerMiddleware implements NestMiddleware {
 
             this.logger.extraLogs("Request", level, {
                 method: method,
-                url: url,
+                url: originalUrl,
                 query: query,
                 statusCode: statusCode,
                 contentLength: contentLength,
