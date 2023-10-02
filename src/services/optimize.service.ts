@@ -12,22 +12,12 @@ export class OptimizeService {
         format: Formats,
         quality?: number,
     ): Promise<Buffer> {
-        let img = sharp(imgBuffer);
+        const img = sharp(imgBuffer);
         const { width: sourceWidth } = await img.metadata();
 
         // Math.min prevent grow image to biggest width
         img.resize({ width: Math.min(sourceWidth, width) });
 
-        if (format === Formats.Webp) {
-            img = img.webp({ quality });
-        } else if (format === Formats.Avif) {
-            img = img.avif({ quality });
-        } else if (format === Formats.Png) {
-            img = img.png({ quality });
-        } else if (format === Formats.Jpeg) {
-            img = img.jpeg({ quality });
-        }
-
-        return await img.toBuffer();
+        return await img[format]({ quality }).toBuffer();
     }
 }
