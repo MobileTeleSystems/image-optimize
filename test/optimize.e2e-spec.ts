@@ -24,7 +24,7 @@ describe("OptimizeController (e2e)", () => {
         return request(app.getHttpServer())
             .get(`/optimize?${search.toString()}`)
             .expect("Content-Type", "image/jpeg")
-            .expect("Content-Length", "1548")
+            .expect("Content-Length", "1547")
             .expect(200);
     });
 
@@ -37,7 +37,7 @@ describe("OptimizeController (e2e)", () => {
         return request(app.getHttpServer())
             .get(`/optimize?${search.toString()}`)
             .expect("Content-Type", "image/png")
-            .expect("Content-Length", "3729")
+            .expect("Content-Length", "3717")
             .expect(200);
     });
 
@@ -50,7 +50,7 @@ describe("OptimizeController (e2e)", () => {
         return request(app.getHttpServer())
             .get(`/optimize?${search.toString()}`)
             .expect("Content-Type", "image/webp")
-            .expect("Content-Length", "666")
+            .expect("Content-Length", "650")
             .expect(200);
     });
 
@@ -63,7 +63,7 @@ describe("OptimizeController (e2e)", () => {
         return request(app.getHttpServer())
             .get(`/optimize?${search.toString()}`)
             .expect("Content-Type", "image/avif")
-            .expect("Content-Length", "675")
+            .expect("Content-Length", "676")
             .expect(200);
     });
 });
