@@ -1,5 +1,60 @@
 # Changelog
 
+All notable changes to this project will be documented in this file.
+
+## [1.6.0] - 2025-07-19
+
+### 🚀 Features
+
+- Throw error 400 on image download error
+- Update packages versions
+- Update sharp library version
+- Willsoto/nestjs-prometheus by prom-client, use originalUrl for logs
+- Update dependencies versions
+- Update dependecies version
+- Add Fastify server for testing image optimization
+
+### 🐛 Bug Fixes
+
+- Throw error 404 if image src return 404
+- Update ESLint configuration file name in Dockerfile and README example URL
+- Correct typos and improve clarity in README.md
+
+### 🧪 Testing
+
+- Fix metrics test
+- Update e2e controll summ
+- Enhance OptimizeController tests with comprehensive validation scenarios
+
+### ⚙️ Miscellaneous Tasks
+
+- Update github action versions
+- Add husky, minor code style fixes
+- *(release)* 1.4.0
+- Update docker image version
+- Remove husky from production container
+- Add badges to readme
+- Update code style for md files
+- Make correct license
+- Update markdown styles
+- Fix badges reositories
+- Add markdown lint
+- Add badge for sharp js library
+- Update code style for readme
+- Clean package-lock
+- Update npm link url
+- Remove npm badge
+- Code style for code of conduct
+- *(release)* 1.5.0
+- Update dependencies and devDependencies to latest versions
+- Remove pull request trigger from Docker publish workflow
+- Update Docker workflow and add git-cliff configuration for changelog management
+- Update package-lock.json
+- Add permissions section for contents write access in Docker workflow
+- Update permissions in Docker workflow to allow write access for contents
+
+# Changelog
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ## [1.5.0](https://github.com/MobileTeleSystems/image-optimize/compare/v1.4.0...v1.5.0) (2023-10-02)
