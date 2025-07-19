@@ -10,9 +10,9 @@ we have created a microservice that perfectly copes with this task.
 
 Features:
     - Resize images for the user's screen size,
-    - Image compressions to reduce traffic,
+    - Image compression to reduce traffic,
     - Converting images to modern formats such as webp and avif,
-    - Works with dynamically content, compression occurs on the fly,
+    - Works with dynamic content, compression occurs on the fly,
     - High compression speed, an average picture is processed in just 200 ms,
     - Includes exporter of metrics for Prometheus,
     - Supports basic authorization for multiple domains and endpoints,
@@ -50,7 +50,7 @@ docker run -d --restart always -p 3000:3000 mtsrus/image-optimize
 - `-e ALLOW_SIZES="100,200,1024-1920"` - an array of allowed sizes for the resulting images,
     default 100-1920. Use specific values to prevent heavy loads on the server.
 
-- `-e ALLOW_SOURCES="https%3A%2F%2Ftb.mts.ru%2F"` - url array of allowed addresses for image sources, default * (any).
+- `-e ALLOW_SOURCES="https%3A%2F%2Ftb.mts.ru%2F"` - URL array of allowed addresses for image sources, default * (any).
     Use comma as separator. It is recommended to apply encodeURIComponent to url.
 
 - `-e BASIC_AUTHS="https%3A%2F%2Ftb.mts.ru%2F"` - an array of endpoints with basic authorization parameters, default empty.
