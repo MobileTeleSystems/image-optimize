@@ -29,7 +29,7 @@ docker run -it --rm -p 3000:3000 mtsrus/image-optimize
 Now you can open the browser and check the work with the command:
 
 ```sh
-http://localhost:3000/optimize?size=1060&format=webp&src=https://tb.mts.ru/static/landing/images-index2/banner/slider/partners.png
+http://localhost:3000/optimize?size=1060&format=webp&src=https://mtscdn.ru/upload/iblock/75d/cmn5ki0o5dyk5laamf0idch2n77qf8gd.png
 ```
 
 By changing the src, size, format parameters,
