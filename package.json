@@ -26,7 +26,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "release": "cliff-jumper --name 'ts-fetch' --package-path '.' --no-skip-changelog --no-skip-tag",
+    "release": "cliff-jumper --name 'image-optimize' --package-path '.' --no-skip-changelog --no-skip-tag",
     "prepare": "husky install"
   },
   "lint-staged": {

@@ -53,10 +53,6 @@ All notable changes to this project will be documented in this file.
 - Add permissions section for contents write access in Docker workflow
 - Update permissions in Docker workflow to allow write access for contents
 
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
-
 ## [1.5.0](https://github.com/MobileTeleSystems/image-optimize/compare/v1.4.0...v1.5.0) (2023-10-02)
 
 
