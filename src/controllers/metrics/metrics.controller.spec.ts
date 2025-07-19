@@ -15,6 +15,7 @@ describe("MetricsController", () => {
 
     describe("root", () => {
         it('should return "Hello World!"', () => {
+            expect(typeof appController).toBe("object");
             expect("Hello World!").toBe("Hello World!");
         });
     });

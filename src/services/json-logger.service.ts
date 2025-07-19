@@ -63,7 +63,7 @@ export class JsonLogger implements LoggerService {
     ): void {
         console.log(
             JSON.stringify({
-                message: message,
+                message: String(message),
                 ...extraProps,
                 time: Date.now(),
                 level: level,

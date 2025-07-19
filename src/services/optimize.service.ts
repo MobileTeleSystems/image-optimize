@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 import * as sharp from "sharp"; // http://sharp.pixelplumbing.com/en/stable/api-constructor/ , https://developers.google.com/speed/webp/docs/cwebp
 import { Formats } from "../enums/formats";
 
-sharp.concurrency(Number.parseInt(process.env.SHARP_CONCURRENCY, 10));
+sharp.concurrency(Number.parseInt(process.env.SHARP_CONCURRENCY as string, 10));
 
 @Injectable()
 export class OptimizeService {

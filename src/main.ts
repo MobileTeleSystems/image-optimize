@@ -15,6 +15,6 @@ async function bootstrap() {
         logger: new JsonLogger(),
     });
 
-    await app.listen(process.env.PORT, "0.0.0.0");
+    await app.listen(process.env.PORT as string, "0.0.0.0");
 }
 bootstrap();
