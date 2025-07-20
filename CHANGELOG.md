@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.2] - 2025-07-20
+
+### ⚙️ Miscellaneous Tasks
+
+- Update Docker image tags to version 1.6.1
+
 ## [1.6.1] - 2025-07-19
 
 ### ⚙️ Miscellaneous Tasks
