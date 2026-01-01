@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.5] - 2026-01-01
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
 ## [1.6.4] - 2025-11-21
 
 ### ⚙️ Miscellaneous Tasks
