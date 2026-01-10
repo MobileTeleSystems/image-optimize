@@ -8,6 +8,8 @@ name: Docker
 on:
   push:
     branches: [ main ]
+  schedule:
+    - cron: '0 12 1-7 1,7 4'  # First Thursday of January and July at 12:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -20,10 +22,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
+        uses: actions/checkout@v6
 
       - name: Log into registry docker.io
         uses: docker/login-action@v3
@@ -33,11 +32,10 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and publish package
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/
-
       - run: git config --global user.email "elabutin@mts.ru"
       - run: git config --global user.name "Eugene Labutin"
       - run: npm ci
@@ -53,7 +51,7 @@ jobs:
           echo "PATCH=$(echo $VERSION | cut -d. -f3)" >> $GITHUB_ENV
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: |
