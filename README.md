@@ -1,4 +1,4 @@
-# 🖼️ Image Optimize
+# Image Optimize
 
 **High-performance microservice for on-the-fly image optimization, resizing, and format conversion**
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 📋 Overview
+## Overview
 
 **Image Optimize** is a lightweight, production-ready microservice that optimizes images dynamically. Built with [NestJS](https://nestjs.com/) and powered by [Sharp](https://sharp.pixelplumbing.com/), it delivers exceptional performance for modern web applications.
 
@@ -24,21 +24,21 @@
 
 Optimizing images is critical for web performance — reducing page load times, saving bandwidth, and improving SEO rankings. This microservice handles all optimization on-the-fly, requiring no pre-processing or storage of optimized variants.
 
-### ✨ Features
+### Features
 
 | Feature | Description |
 |---------|-------------|
-| 🔄 **Dynamic Resizing** | Resize images to any width, perfect for responsive designs |
-| 🗜️ **Smart Compression** | Reduce file sizes with configurable quality settings (1-100) |
-| 🎨 **Modern Formats** | Convert to WebP, AVIF, JPEG, or PNG on demand |
-| ⚡ **High Performance** | Average processing time ~200ms per image |
-| 📊 **Prometheus Metrics** | Built-in `/metrics` endpoint for monitoring |
-| 🔐 **Security Controls** | Allowlist for sources, size restrictions, Basic Auth support |
-| 🐳 **Docker Ready** | Production-optimized container image |
+| **Dynamic Resizing** | Resize images to any width, perfect for responsive designs |
+| **Smart Compression** | Reduce file sizes with configurable quality settings (1-100) |
+| **Modern Formats** | Convert to WebP, AVIF, JPEG, or PNG on demand |
+| **High Performance** | Average processing time ~200ms per image |
+| **Prometheus Metrics** | Built-in `/metrics` endpoint for monitoring |
+| **Security Controls** | Allowlist for sources, size restrictions, Basic Auth support |
+| **Docker Ready** | Production-optimized container image |
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Using Docker (Recommended)
 
@@ -63,7 +63,7 @@ http://localhost:3000/optimize?src=https://example.com/photo.jpg&size=1200&forma
 
 ---
 
-## 📖 API Reference
+## API Reference
 
 ### `GET /optimize`
 
@@ -101,7 +101,7 @@ curl http://localhost:3000/metrics
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 Configure the service using environment variables:
 
@@ -151,7 +151,7 @@ For sources requiring authentication:
 
 ---
 
-## 🐳 Deployment
+## Deployment
 
 ### Docker Compose
 
@@ -233,35 +233,32 @@ spec:
 
 ---
 
-## 🧩 Frontend Integration
+## Frontend Integration
 
 ### React Component
 
 Use our official React component for seamless integration:
 
 ```bash
-npm install @mts/image-optimize-react
+npm install @mts-pjsc/image-optimize
 ```
 
 ```jsx
-import { OptimizedImage } from '@mts/image-optimize-react';
+import { Image } from '@mts-pjsc/image-optimize';
 
-function App() {
-  return (
-    <OptimizedImage
-      src="https://cdn.example.com/photo.jpg"
-      optimizerUrl="https://your-optimizer.com/optimize"
-      alt="Optimized photo"
-    />
-  );
-}
+<Image
+  alt="Optimized image"
+  src="https://cdn.example.com/photo.jpg"
+/>
 ```
+
+The component automatically handles size detection and format negotiation with the optimization service.
 
 👉 [image-optimize-react on GitHub](https://github.com/MobileTeleSystems/image-optimize-react)
 
 ---
 
-## 🛠️ Development
+## Development
 
 ### Prerequisites
 
@@ -309,7 +306,7 @@ src/
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -321,13 +318,13 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 🔗 Links
+## Links
 
 - [Docker Hub](https://hub.docker.com/r/mtsrus/image-optimize)
 - [GitHub Repository](https://github.com/MobileTeleSystems/image-optimize)
