@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.10] - 2026-01-10
+
+### ⚙️ Miscellaneous Tasks
+
+- *(Dockerfile)* Remove husky install command from package.json
+
 ## [1.6.9] - 2026-01-10
 
 ## [1.6.8] - 2026-01-10
