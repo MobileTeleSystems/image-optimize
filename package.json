@@ -32,8 +32,7 @@
   "lint-staged": {
     "./(src|test)/**/*.(ts|tsx|js|jsx)": [
       "eslint --fix -c eslint.config.mjs --ext .tsx,.ts,.jsx,.js"
-    ],
-    "*.md": "markdownlint --fix"
+    ]
   },
   "dependencies": {
     "@nestjs/common": "^11.1.9",
