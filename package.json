@@ -1,6 +1,6 @@
 {
   "name": "image-optimize",
-  "version": "1.6.5",
+  "version": "1.6.7",
   "description": "",
   "author": "MobileTeleSystems",
   "homepage": "https://github.com/MobileTeleSystems/image-optimize",
@@ -62,7 +62,7 @@
     "@types/node-fetch": "^3.0.2",
     "@types/sharp": "^0.32.0",
     "@types/supertest": "^6.0.3",
-    "eslint": "^9.39.1",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "globals": "^16.5.0",

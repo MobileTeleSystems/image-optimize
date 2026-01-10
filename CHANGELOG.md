@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.7] - 2026-01-10
+
+## [1.6.6] - 2026-01-10
+
 ## [1.6.5] - 2026-01-01
 
 # Changelog
