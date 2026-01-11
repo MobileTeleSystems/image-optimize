@@ -22,7 +22,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nestjs -u 1001
 
 COPY package*.json ./
-RUN sed -i '/"prepare":/d' ./package.json
+RUN node -e "const pkg=require('./package.json'); delete pkg.scripts.prepare; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2))"
 RUN npm ci --omit=dev
 COPY --from=development /app/dist ./dist
 
