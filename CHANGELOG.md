@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.11] - 2026-01-11
+
+### ⚙️ Miscellaneous Tasks
+
+- *(Dockerfile)* Replace sed command with node script to remove "prepare" script from package.json
+
 ## [1.6.10] - 2026-01-10
 
 ### ⚙️ Miscellaneous Tasks
