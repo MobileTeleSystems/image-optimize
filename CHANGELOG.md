@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.6.12] - 2026-01-14
+
+### ⚙️ Miscellaneous Tasks
+
+- *(workflow)* Update cron schedule for docker publish workflow
+
 ## [1.6.11] - 2026-01-11
 
 ### ⚙️ Miscellaneous Tasks
